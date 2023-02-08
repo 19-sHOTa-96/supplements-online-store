@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+	<center>
+		<section class="container">
+			<form class='registration-div border container' action="{{ url_for('user.registration') }}" method="POST">
+				{{ form.csrf_token }}
+				<br><br><br>
+				<h1>Registration</h1>
+				<br><br>
+				{{ form.first_name(class="form-control form-control-lg", type="text", placeholder="First name") }}
+				{{ form.last_name(class="form-control form-control-lg", type="text", placeholder="Last name") }}
+				{{ form.email(class="form-control form-control-lg", type="text", placeholder="Email") }}
+				{{ form.phone(class="form-control form-control-lg", type="text", placeholder="Phone") }}
+				{{ form.password(class="form-control form-control-lg", type="password", placeholder="Password") }}
+				<br>
+				<center>{{ form.submit(class="btn btn-outline-secondary btn-lg") }}</center>
+			</form>
+		</section>	
+	</center>
+
+{% endblock %}

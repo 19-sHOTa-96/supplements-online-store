@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+	<center>
+		<section class="container">
+			<form class='contact-div border container' action="{{ url_for('main.contact') }}" method="POST">
+				{{ form.csrf_token }}
+				<br><br><br>
+				<h1>Contact</h1>
+				<br><br>
+				{{ form.first_name(class="form-control form-control-lg", type="text", placeholder="First name") }}
+				{{ form.email(class="form-control form-control-lg", type="email", placeholder="Email") }}
+				{{ form.phone(class="form-control form-control-lg", type="phone", placeholder="Phone") }}
+				{{ form.message(class="form-control form-control-lg", id="exampleFormControlTextarea1", rows="5.5", placeholder="Message") }}
+				<br>
+				<center>{{ form.submit(class="btn btn-outline-secondary btn-lg") }}</center>
+			</form>
+		</section>	
+	</center>
+
+{% endblock %}

@@ -1,0 +1,101 @@
+*{
+	font-family: fantasy;
+}
+
+ul {
+	margin-top: 15px;
+
+}
+
+.nav-link {
+	color: black;
+	font-size: 1.2rem;
+	color: black;
+}
+
+.nav-link:link {
+	color: black;
+	font-size: 1.2rem;
+	color: black;
+}
+
+.nav-link:active {
+	color: black;
+	font-size: 1.2rem;
+	color: black;
+}
+
+.nav-link:hover {
+	color: black;
+	font-size: 1.2rem;
+	color: gray;
+}
+
+.nav-link:visited {
+	color: black;
+	font-size: 1.2rem;
+	color: black;
+}
+
+.footer-div {
+  text-align: center;
+  margin-top: 350px;
+}
+
+h1 {
+	color: gray;
+}
+
+/* HOME */
+.home-section-1 {
+	padding: 200px;
+	border-radius: 3px;
+}
+
+.home-hr {
+	margin-top: 200px;
+}
+
+/* REGISTRATION */
+.registration-div {
+	margin-top: 100px;
+	border-radius: 3px;
+	height: 690px;
+	width: 600px;
+}
+
+.form-control {
+	width: 500px;
+	margin: 20px;
+}
+
+/* LOGIN */
+.login-div {
+	margin-top: 100px;
+	border-radius: 3px;
+	height: 590px;
+	width: 600px;
+}
+
+/* CONTACT */
+.contact-div {
+	margin-top: 100px;
+	border-radius: 3px;
+	height: 750px;
+	width: 600px;
+}
+
+.contact-div {
+	margin-top: 100px;
+	border-radius: 3px;
+	height: 750px;
+	width: 600px;
+}
+
+
+.contact-div textarea {
+	resize: none;
+}
+
+
+/* PRODUCTS */
