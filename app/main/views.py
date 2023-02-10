@@ -27,8 +27,8 @@ def contact():
 		mail_sender_info['phone'] = form.phone.data
 		mail_sender_info['message'] = form.message.data
 
-		send_mail(app.config['RECIPIENT_MAIL'], app.config['MAIL_SUBJECT_PREFIX'], 
-				  'mail/mail-contact.html', mail_sender_info=mail_sender_info)
+		send_contact_mail(current_app.config['RECIPIENT_MAIL'], current_app.config['MAIL_SUBJECT_PREFIX'],
+						  'mail/mail-contact', current_app.config['MAIL_USERNAME'], mail_sender_info=mail_sender_info)
 
 	return render_template('contact.html', form=form)	
 
@@ -36,6 +36,4 @@ def contact():
 def about():
 	return render_template('about.html')
 	
-
-
 	

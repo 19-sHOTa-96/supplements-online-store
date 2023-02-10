@@ -14,7 +14,7 @@
 				{{ form.email(class="form-control form-control-lg", type="text", placeholder="Email") }}
 				{{ form.password(class="form-control form-control-lg", type="password", placeholder="Password") }}
 				<br>
-				<center>{{ form.submit(class="btn btn-outline-secondary btn-lg") }}</center>
+				<center>{{ form.submit(class="btn btn-outline-secondary btn-lg") }}<br><br><a href="{{ url_for('user.reset_password_code') }}">forgor password?</a></center>
 			</form>
 		</section>	
 	</center>

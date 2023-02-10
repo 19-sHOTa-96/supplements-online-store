@@ -10,9 +10,9 @@ def send_async_email(app, msg):
 		mail.send(msg)
 
 
-def send_contact_mail(to, subject, template, **kwargs):
+def send_contact_mail(to, subject, template, sender, **kwargs):
 	app = current_app._get_current_object()
-	msg = Message(subject, sender=app.config['MAIL_SENDER'], 
+	msg = Message(subject, sender=sender, 
 				  recipients=[to])
 
 	msg.html = render_template(template + '.html', **kwargs)
@@ -23,10 +23,10 @@ def send_contact_mail(to, subject, template, **kwargs):
 	return thr
 
 
-def send_confirmation_email(tp, subject, template, **kwargs):
+def send_confirmation_email(to, subject, template, **kwargs):
 	app = current_app._get_current_object()
 	msg = Message(app.config['MAIL_SUBJECT_PREFIX'] + subject,
-		sender=app.config['MAIL_SENDER'], recipients=[to])
+				  sender=app.config['MAIL_USERNAME'], recipients=[to])
 
 	msg.body = render_template(template + '.txt', **kwargs)
 	mail.send(msg)

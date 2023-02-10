@@ -26,10 +26,10 @@ class Product(db.Model):
 class User(UserMixin, db.Model):
 	__tablename__ = 'users'
 	id = db.Column(db.Integer, primary_key=True)
-	first_name = db.Column(db.String(64), unique=True)
+	first_name = db.Column(db.String(64))
 	last_name = db.Column(db.String(64))
-	email = db.Column(db.String(64))
-	phone = db.Column(db.String(64))
+	email = db.Column(db.String(64), unique=True)
+	phone = db.Column(db.String(64), unique=True)
 	password = db.Column(db.String(300))
 	password_hash = db.Column(db.String(200))
 	confirmed = db.Column(db.Boolean, default=False)
@@ -64,4 +64,5 @@ class User(UserMixin, db.Model):
 	def __str__(self):
 		return self.first_name
 
-		
+
+				
