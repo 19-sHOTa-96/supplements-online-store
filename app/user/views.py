@@ -2,14 +2,17 @@ from . import user
 from flask import render_template, redirect, url_for, flash, session, request, current_app
 from flask_login import login_required, login_user, logout_user, current_user
 from ..models import User
+
 from .forms import RegistrationForms, LoginForms, ContactForms, ChangePasswordForms, ChangeEmailForms, \
 				   ResetPassCodeForms, ConfirmPassCodeForms, ResetPasswordForms
+				   
 from .. import db
 from ..email import send_confirmation_email, send_contact_mail
-from .utiliy import generate_code
+from ..utility.helper import generate_code
+from ..utility.decorators import permission_required, admin_required
 
 
-## Registration And Confiramtion Block -----------------------------------------------------------|
+## Registration And Confiramtion Block 
 @user.route('/registration', methods=['GET', 'POST'])
 def registration():
 	form = RegistrationForms()
@@ -78,10 +81,9 @@ def resend_confirmation():
 		'user/email/mail-confirmation', user=user, token=token)
 
 	flash('A new confirmation email has been sent to you by email.')
-	return redirect(url_for('main.home'))
+	return redirect(url_for('user.home'))
 
 
-# ---------------------------------------------------------------------------------------------------------------------------------------------|
 @user.route('/reset_password_code', methods=['GET', 'POST'])
 def reset_password_code():
 	form = ResetPassCodeForms()
@@ -123,8 +125,7 @@ def reset_password(user_id):
 		flash('Your password changed successfully')
 		return redirect(url_for('main.home'))
 
-	return render_template('user/reset_password.html', form=form, user_id=user_id)	
-# ---------------------------------------------------------------------------------------------------------------------------------------------|
+	return render_template('user/reset_password.html', form=form, user_id=user_id)		
 
 
 @user.route('/change_password')
@@ -137,9 +138,9 @@ def change_password():
 def change_email():
 	form = ChangeEmailForms()
 	return render_template('user/change_email.html', form=form)
+	
 
-
-## Login Logout Block --------------------------------------------------------------------------|
+## Login Logout Block
 @user.route('/login', methods=['GET', 'POST'])
 def login():
 	form = LoginForms()

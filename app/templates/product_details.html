@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+
+
+{% block content %}
+
+	<section class="container">
+
+			<h1>{{ productdetails.product_name }}</h1>
+
+			<br>
+
+			<img src="{{ url_for('static', filename='images/') }}{{productdetails.product_product_detail.image}}" class="rounded float-start" alt="..." height="454px" width="454px">
+
+			<ul>
+				<li>{{ productdetails.product_product_detail.product_brand }}</li>
+				<li>{{ productdetails.product_description }}</li>
+				<!-- <li>{{ productdetails.product_review }}</li> -->
+			</ul>	
+
+			<hr>
+
+			<pre>{{ productdetails.product_review }}</pre>
+			<div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+			  <div class="modal-dialog modal-dialog-centered">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Review</h1>
+			        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			      </div>
+
+			      <form class="review-div" action="{{ url_for('main.product_details', product_id=product_id) }}" method="POST">
+			      	  {{ form.csrf_token }}
+				      <div class="modal-body">
+
+				      	<center><p>Write what you think about this product</p></center>
+				        {{ form.review(id="w3review", rows="4", cols="50") }}
+
+				      </div>
+
+				      <div class="modal-footer">
+				        {{ form.submit(class="btn btn-outline-dark") }}
+				      </div>
+
+			      </form>
+
+			    </div>
+			  </div>
+			</div>
+			<button class="btn btn-outline-dark" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Write review</button>
+	</section>
+
+	<br>
+
+	<section class="review-section container">
+		<h1>Reviews</h1>
+		<br>
+		{% for review in product_review %}
+		<p>{{ review }}</p>
+		<p><em>Author: {{ review.author }}</em></p>
+		<hr>
+		{% endfor %}
+	</section>	
+
+{% endblock %}

@@ -12,7 +12,9 @@ class Config:
 	MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
 	MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
 	RECIPIENT_MAIL = os.environ.get('RECIPIENT_MAIL')
+	BROSSUPP_EMAIL = os.environ.get('BROSSUPP_EMAIL')
 	MAIL_SUBJECT_PREFIX = '[SupplementStore]'
+	FLASK_ADMIN_SWATCH = 'slate'
 	SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 	@staticmethod
@@ -22,7 +24,7 @@ class Config:
 class DevelopmentConfig(Config):
 	DEBUG = True
 	SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or \
-	'sqlite:///' + os.path.join(basedir, 'data-dev.sqlite')
+	'mysql+pymysql://root:Pass2500-9!@localhost/suppdb' # 'sqlite:///' + os.path.join(basedir, 'data-dev.sqlite')
 
 class TestingConfig(Config):
 	TESTING = True
@@ -37,6 +39,7 @@ config = {
 	'development': DevelopmentConfig,
 	'testing': TestingConfig,
 	'production': ProductionConfig,
+	'development': DevelopmentConfig,
 	'default': DevelopmentConfig
 }					
 

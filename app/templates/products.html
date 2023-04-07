@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 
 
-
 {% block content %}
 
 	<br><br>
@@ -9,17 +8,19 @@
 	<center><h1 style="color: gray">Products...</h1></center>
 	<br><br><br>	
 	<section class="container d-flex justify-content-evenly">	
+
 		{% for product in products %}
 			<div class="card" style="width: 18rem;">
-			  <img src="static/images/{{product.image}}" class="card-img-top" alt="...">
+			  <img src="{{ url_for('static', filename='images/') }}{{product.image}}" class="card-img-top" alt="..." height="300px" width="400px">
 			  <div class="card-body">
 			    <h5 class="card-title">{{product.product_name}}</h5>
 			    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-			    <a href="#" class="btn btn-outline-secondary btn-lg">View</a>
+			    <a href="{{ url_for('main.product_details', product_id=product.product_detail_id) }}" class="btn btn-outline-secondary btn-lg">Details</a>
 			  </div>
 			</div>
 			<br>
-		{% endfor %}			
+		{% endfor %}	
+
 	</section>
 	</center>
 

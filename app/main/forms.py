@@ -11,4 +11,8 @@ class ContactForms(FlaskForm):
 	message = TextAreaField('Send Message...', validators=[DataRequired()])
 	submit = SubmitField('Submit')
 
-	
+
+class ReviewtForm(FlaskForm):
+	review = TextAreaField('Comment', validators=[DataRequired()])
+	submit = SubmitField('Submit')
+
